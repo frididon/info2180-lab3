@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
     displaySqaures(board);
 
     let squares = document.querySelectorAll('.square')
-
+        // Adds X then O upon clicks 
     squares.forEach(square => {
         square.addEventListener('click', () => {
             if (factO && square.textContent == '') {
@@ -40,6 +40,23 @@ window.addEventListener('DOMContentLoaded', (e) => {
                 square.textContent = 'X'
                 factO = true
             }
+            // Changes square hover style after square has been click 
+            square.addEventListener('mouseenter', e => {
+                square.classList.add('hover')
+            })
+
+            // Removes hover style from the square on mouse leave
+            square.addEventListener('mouseleave', e => {
+                    square.classList.remove('hover')
+                })
+                //Reset Game
+            btn.addEventListener('click', e => {
+                squares.forEach(square => {
+                    square.textContent = '';
+                    square.classList.remove('X');
+                    square.classList.remove('O');
+                })
+            })
         })
     })
 });
